@@ -1,17 +1,3 @@
-package me.illusion.outcastshops.Events;
-
-import com.google.common.collect.Maps;
-import me.illusion.outcastshops.OutcastShops;
-import me.illusion.outcastshops.Util.Communication.Chat;
-import me.illusion.outcastshops.Util.Config.ConfigData;
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.SignChangeEvent;
-
-import java.util.Map;
-
 public class SignChange implements Listener {
     private static Map<String, Integer> shops = Maps.newHashMap();
 
