@@ -1,5 +1,3 @@
-package me.illusion.outcastshops.Util.Communication;
-
 public class LogMe {
     private static final String consoleWatermark = "[+] Outcast Log - ";
 
