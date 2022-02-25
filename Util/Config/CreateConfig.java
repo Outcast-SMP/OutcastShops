@@ -1,14 +1,3 @@
-package me.illusion.outcastshops.Util.Config;
-
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-
 public class CreateConfig {
     private String configName;
     private File file = null;
