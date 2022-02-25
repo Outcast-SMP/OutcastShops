@@ -1,17 +1,3 @@
-package me.illusion.outcastshops;
-
-import me.illusion.outcastcore.OutcastCore;
-import me.illusion.outcastshops.Commands.Commands;
-import me.illusion.outcastshops.Util.Communication.LogMe;
-import me.illusion.outcastshops.Util.Config.ConfigState;
-import me.illusion.outcastshops.Util.Config.CreateConfig;
-import org.bukkit.Bukkit;
-import org.bukkit.event.Listener;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.reflections.Reflections;
-
-import java.lang.reflect.InvocationTargetException;
-
 public final class OutcastShops extends JavaPlugin {
     static OutcastShops instance = null;
 
