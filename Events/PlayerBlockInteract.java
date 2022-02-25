@@ -1,25 +1,3 @@
-package me.illusion.outcastshops.Events;
-
-import me.illusion.outcastshops.OutcastShops;
-import me.illusion.outcastshops.Shop.Shop;
-import me.illusion.outcastshops.Util.Communication.Chat;
-import me.illusion.outcastshops.Util.Communication.LogMe;
-import me.illusion.outcastshops.Util.Config.ConfigData;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.Chest;
-import org.bukkit.block.Sign;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.player.PlayerInteractEvent;
-
-import java.util.ArrayList;
-import java.util.UUID;
-
 public class PlayerBlockInteract implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e) {
