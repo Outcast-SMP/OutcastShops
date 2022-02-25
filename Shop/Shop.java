@@ -1,15 +1,3 @@
-package me.illusion.outcastshops.Shop;
-
-import me.illusion.outcastshops.Util.Communication.Chat;
-import me.illusion.outcastshops.Util.Communication.LogMe;
-import org.bukkit.Material;
-import org.bukkit.block.Chest;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.Map;
-
 public class Shop {
     private Player buyer = null;
     private Chest shopChest = null;
