@@ -1,7 +1,3 @@
-package me.illusion.outcastshops.Util.Config;
-
-import me.illusion.outcastshops.Events.SignChange;
-
 public class ConfigState {
     private CreateConfig config;
 
