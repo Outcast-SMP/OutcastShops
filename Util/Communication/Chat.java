@@ -1,11 +1,3 @@
-package me.illusion.outcastshops.Util.Communication;
-
-import me.illusion.outcastshops.OutcastShops;
-import me.illusion.outcastshops.Util.Config.ConfigData;
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 public class Chat {
     public static String watermark = new ConfigData(OutcastShops.getInstance().config).getStringFromConfig("shops.prefix") + " ";
 
