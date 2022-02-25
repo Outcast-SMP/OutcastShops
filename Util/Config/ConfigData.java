@@ -1,8 +1,3 @@
-package me.illusion.outcastshops.Util.Config;
-
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-
 public class ConfigData {
     private CreateConfig config;
 
