@@ -95,16 +95,18 @@ public class PlayerBlockBreak implements Listener {
             String shopAuthor = IridiumColorAPI.stripColorFormatting(lines[3]);
             String shopDestroyPermission = new ConfigData(OutcastShops.getInstance().config).getStringFromConfig("shops.permissions.destroy");
 
-            if (shopAuthor.equals(ply.getName())) {
-                new SignChange().removeShop(ply.getName());
-                return true;
+            if (!shopAuthor.equals(ply.getName())) {
+                if (ply.hasPermission(shopDestroyPermission)) {
+                    new SignChange().removeShop(shopAuthor);
+                    return true;
+                }
+
+                return false;
             }
 
-            if (ply.hasPermission(shopDestroyPermission)) {
-                new SignChange().removeShop(shopAuthor);
-                return true;
-            }
+            new SignChange().removeShop(ply.getName());
         }
-        return false;
+
+        return true;
     }
 }
