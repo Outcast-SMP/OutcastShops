@@ -30,26 +30,19 @@ public class PlayerBlockBreak implements Listener {
             if (getBlockFromFace(block).isEmpty()) {
                 return;
             }
+            
+            if (((InventoryHolder) block.getState()).getInventory() instanceof DoubleChestInventory) {
+                DoubleChestInventory doubleInv = (DoubleChestInventory) ((InventoryHolder) block.getState()).getInventory();
 
-            for (int i = 0; i < getBlockFromFace(block).size(); i++) {
-                Block attachedBlock = getBlockFromFace(block).get(i);
+                Block leftChest = doubleInv.getLeftSide().getLocation().getBlock();
+                Block rightChest = doubleInv.getRightSide().getLocation().getBlock();
 
-                if (!(attachedBlock.getState() instanceof Sign)) {
-                    continue;
-                }
-
-                Sign shopSign = (Sign) attachedBlock.getState();
-
-                if (shopSign.getLines().length < 4) {
-                    return;
-                }
-
-                if (!isAuthor(shopSign, ply)) {
-                    new Chat(ply, new ConfigData(OutcastShops.getInstance().chatMessages)
-                            .getStringFromConfig("chat.error.remove-player-shop.message")).message(true);
-                    e.setCancelled(true);
-                }
+                checkBlockFaces(ply, leftChest, e);
+                checkBlockFaces(ply, rightChest, e);
+                return;
             }
+
+            checkBlockFaces(ply, block, e);
             return;
         }
 
@@ -108,5 +101,27 @@ public class PlayerBlockBreak implements Listener {
         }
 
         return true;
+    }
+    
+    private void checkBlockFaces(Player ply, Block block, BlockBreakEvent e) {
+        for (int i = 0; i < getBlockFromFace(block).size(); i++) {
+            Block attachedBlock = getBlockFromFace(block).get(i);
+
+            if (!(attachedBlock.getState() instanceof Sign)) {
+                continue;
+            }
+
+            Sign shopSign = (Sign) attachedBlock.getState();
+
+            if (shopSign.getLines().length < 4) {
+                return;
+            }
+
+            if (!isAuthor(shopSign, ply)) {
+                new Chat(ply, new ConfigData(OutcastShops.getInstance().chatMessages)
+                        .getStringFromConfig("chat.error.remove-player-shop.message")).message(true);
+                e.setCancelled(true);
+            }
+        }
     }
 }
