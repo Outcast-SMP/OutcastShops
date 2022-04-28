@@ -33,19 +33,19 @@ public class PlayerBlockInteract implements Listener {
             if (getBlockFromFace(block).isEmpty()) {
                 return;
             }
+            
+            if (((InventoryHolder) block.getState()).getInventory() instanceof DoubleChestInventory) {
+                DoubleChestInventory doubleInv = (DoubleChestInventory) ((InventoryHolder) block.getState()).getInventory();
 
-            for (int i = 0; i < getBlockFromFace(block).size(); i++) {
-                Block attachedBlock = getBlockFromFace(block).get(i);
+                Block leftChest = doubleInv.getLeftSide().getLocation().getBlock();
+                Block rightChest = doubleInv.getRightSide().getLocation().getBlock();
 
-                if (!(attachedBlock.getState() instanceof Sign)) {
-                    continue;
-                }
-
-                if (!canOpenChest(ply, attachedBlock)) {
-                    e.setCancelled(true);
-                    return;
-                }
+                checkBlockFaces(ply, leftChest, e);
+                checkBlockFaces(ply, rightChest, e);
+                return;
             }
+
+            checkBlockFaces(ply, block, e);
             return;
         }
         
@@ -143,5 +143,20 @@ public class PlayerBlockInteract implements Listener {
         }
 
         return false;
+    }
+    
+    private void checkBlockFaces(Player ply, Block block, PlayerInteractEvent e) {
+        for (int i = 0; i < getBlockFromFace(block).size(); i++) {
+            Block attachedBlock = getBlockFromFace(block).get(i);
+
+            if (!(attachedBlock.getState() instanceof Sign)) {
+                continue;
+            }
+
+            if (!canOpenChest(ply, attachedBlock)) {
+                e.setCancelled(true);
+                return;
+            }
+        }
     }
 }
